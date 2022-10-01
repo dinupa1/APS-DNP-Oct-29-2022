@@ -1,3 +1,3 @@
-# Materials for DNP APS meeting
+# Materials for APS DNP Meeting
 
 Abstract and presentation
