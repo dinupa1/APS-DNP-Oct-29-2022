@@ -3,7 +3,7 @@
 % date 09-29-2022
 
 
-\documentclass[11pt, xcolor={dvipsnames}, aspectratio = 169]{beamer}
+\documentclass[10pt, xcolor={dvipsnames}, aspectratio = 169]{beamer}
 
 %
 % use packages
@@ -45,13 +45,14 @@
 \setbeamertemplate{subsection in toc}[square]
 \setbeamertemplate{footline}[frame number]
 \setbeamertemplate{caption}[numbered]
+\setbeamerfont{footnote}{size=\tiny}
 \setbeamercovered{invisible}
 }
 
 %
 % use this command for citing
 %
-\newcommand{\citeme}[1]{{\tiny \textcolor{blue}{[\fullcite{#1}]}}}
+\newcommand{\citeme}[1]{{\tiny \footfullcite{#1}}}
 
 %
 % JPsi partilce
@@ -120,7 +121,7 @@ Collaboration}
 
 \begin{frame}{\jpsi Particle}
 
-\begin{textblock}{10.0}(0.5, 2.5)
+\begin{textblock}{10.0}(0.5, 2.0)
 
 \begin{itemize}
 
@@ -148,7 +149,7 @@ Collaboration}
 %
 % properties table
 %
-\begin{textblock}{8.0}(1.0, 7.0)
+\begin{textblock}{8.0}(1.0, 6.5)
 \begin{figure}
     \centering
     \includegraphics[height = 3.5cm]{imgs/properties.png}
@@ -235,7 +236,7 @@ Technique of non-relativistic QCD is apply to calculate the $\left<\mathcal{O}^{
 \end{itemize}
 \end{textblock}
 
-\begin{textblock}{15.0}(0.5, 12.9)
+\begin{textblock}{15.0}(0.5, 12.5)
 \begin{itemize}
 \item Using this equation we can remove the detector acceptance dependency from the $A_{N}$.
 \end{itemize}
@@ -418,11 +419,17 @@ w_{\text{Total}} &= w_{\text{Gen.}}(mass, x_{F}) \times w_{A_{N}}
 
 \begin{frame}[fragile]{Gaussian Process Regression (GPR)}
 
-\begin{textblock}{14.0}(0.5, 3.0)
+\begin{textblock}{14.0}(0.5, 2.0)
 
 \begin{itemize}
 
-\item Definition: A Gaussian Process is a collection of random variables, any finite number of which have (consistent) joint Gaussian distributions.
+\item Probability density function (PDF) of a multivariate normal distribution (MVN) with dimension $D$ is;
+
+\begin{equation*}
+\mathcal{N} (x| \mu, \Sigma) = \frac{1}{(2\pi)^{D/2} |\Sigma^{1/2}|} \exp\left[ -\frac{1}{2}(x - \mu)^{T}\sigma^{-1}(x - \mu)\right]
+\end{equation*}
+
+where $D$ is the number of dimensions, $x$ is the variable, $\mu$ is the mean vector and $\Sigma$ is the covariance matrix.
 
 \item Gaussian processes are distributions over functions $f(x)$ of which the distribution is defined by a mean function $m(x)$ and positive definite covariance function $k(x, x')$, with $x$ the function values and $x, x'$ all possible pairs in the input domain:
 
@@ -501,6 +508,14 @@ where $l$ is the length scale of the kernel and $d(\cdot,\cdot)$ is the Euclidea
 
 \item Unfolding in high energy physics represents the correction of measured spectra in data for the finite detector efficiency, acceptance, and resolution from the detector to particle level.
 
+\item The equation of unfolding \footfullcite{Baron:2021vvl};
+
+\begin{equation*}
+p = \frac{1}{\epsilon} M^{-1} \eta (D-B)
+\end{equation*}
+
+where $D$ is the data spectrum, $B$ is the background spectrum, $\eta$ acceptance correction, $M^{-1}$ is the migration matrix and $\epsilon$ is the detector efficiency.
+
 \item We used the \verb|RooUnfold| package in the analysis. Some default algorithms are:
 
 \begin{itemize}
@@ -509,16 +524,20 @@ where $l$ is the length scale of the kernel and $d(\cdot,\cdot)$ is the Euclidea
     \item Bin-by-bin (simple correction factors)
 \end{itemize}
 
-\item We trained the response matrix with Drell-Yan events without any asymmetry included.
-
-\item We used the iterative Bayesian method to unfold the $\phi$ distributions. \citeme{Wynne:2012jb}
-
-\item By using the unfolding method we will correct the bin-by-bin migration.
-
 \end{itemize}
 
 \end{textblock}
 
+\end{frame}
+
+\begin{frame}{RooUnfold}
+\begin{textblock}{14.0}(0.5, 2.5)
+\begin{itemize}
+    \item We trained the response matrix with Drell-Yan events without any asymmetry included.
+    \item We used the iterative Bayesian method to unfold the $\phi$ distributions. \citeme{Wynne:2012jb}
+    \item By using the unfolding method we will correct the bin-by-bin migration.
+\end{itemize}
+\end{textblock}
 \end{frame}
 
 %
@@ -642,7 +661,7 @@ where $l$ is the length scale of the kernel and $d(\cdot,\cdot)$ is the Euclidea
 
 \begin{itemize}
 
-\item Gaussian process regression can be used as a good method to predict the background under the $J/\psi$ peak.
+\item GPR is a supervised machine learning method can be to predict the background under the \jpsi peak.
 
 \item Using iterative Bayesian unfolding, the extracted asymmetry reproduces the generated asymmetry within 1-$\sigma$ confidence interval.
 
