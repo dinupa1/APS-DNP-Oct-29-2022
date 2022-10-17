@@ -287,7 +287,7 @@ polarized solid ammonia target.
 \item SpinQuest measurements will allow us to test models for the internal transverse momentum and angular momentum
 structure of the nucleon.
 
-\item In the SpinQuest experiment \jpsi production should be dominated by the $q\bar{q}$ annihilation.
+\item In the SpinQuest experiment \jpsi production should be dominated by the $q\bar{q}$ annihilation \citeme{STAR:2021tve}.
 
 \item Our goal is to measure $A_{N}$ with an absolute error $\mathcal{O}(10^{-2})$ for a few $p_{T}$ and/or $x_{F}$ bins.
 
@@ -516,6 +516,29 @@ kernel  to predict the background in the \jpsi peak region.
 
 \end{frame}
 
+\begin{frame}{Sanity Check}
+
+\begin{textblock}{7.0}(0.5, 2.0)
+\begin{figure}
+    \centering
+    \includegraphics[width=7.0cm]{imgs/mass_pt.png}
+    \caption{GPR prediction for background.}
+\end{figure}
+\end{textblock}
+
+\begin{textblock}{7.0}(8.0, 3.0)
+\begin{itemize}
+
+  \item We used the Drell-Yan mass distribution in different $p_{T}$ and $x_{F}$ bins to check the GPR prediction.background
+
+  \item As shown in figure 9, the prediction from GPR method agrees with the Drell-Yan events with 95\% confidence interval
+  in the \jpsi mass region.
+
+\end{itemize}
+\end{textblock}
+
+\end{frame}
+
 %
 % Subsection : ROOUnfold
 %
@@ -690,6 +713,8 @@ By using the unfolding method we will correct the bin-by-bin migration.
 \begin{itemize}
 
 \item GPR is a supervised machine learning method can be to predict the background under the \jpsi peak.
+
+\item Using GPR method with the RBF kernel, background of the \jpsi mass can be predicted with 95\% confidence interval.
 
 \item Using iterative Bayesian unfolding, the extracted asymmetry reproduces the generated asymmetry within 1-$\sigma$
 confidence interval.
